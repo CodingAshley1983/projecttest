@@ -30,7 +30,7 @@ $(document).ready(function () {
  
     $("#uploadBtn").on("click", function () {
       event.preventDefault();
-     
+    
       var newImg = $('#imageInput')[0].files;
       console.log(newImg[0].name)
       
@@ -79,24 +79,112 @@ $(document).ready(function () {
               // Unknown error occurred, inspect error.serverResponse
               break;
           }
+            // callface();
         },
+
+
         function () {
           
           // Upload completed successfully, now we can get the download URL
           uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
             console.log('File available at', downloadURL);
             imgSwap(downloadURL);
+
+        
             $('#uploadModal').modal('hide')
- 
-            $(".card-text").text("Your emotion: Happy! Great, let's celebrate");
-            $("#drink-button").show();
+
+           
             
+            $("#drink-button").show();
+                 
+            });
+        
+        
+              console.log(newImg);
           });
+       
+            
+        });
+
+       
+
+
+        function imgUR(){
+          var clientID = "303995ac8d00703";
+          var apiSecret= "82c3b7afac493f3c01f595c7f64cbaada95a7c2d";
+          
+          var queryURL = "https://api.imgur.com/3/image?"+ clientID + apiSecret + downloadURL;
+          
+          console.log("Here's the URL in the callFace function:", queryURL)
+          // Performing AJAX GET request
+          $.ajax({
+              url: queryURL,
+              method: "POST"
+          })
+          // After data comes back from the request
+          .then(function(response) {
+              // storing the data from the AJAX request in the results variable
+              var result= response.token;
+              console.log(result);
+          });
+        }
+
+
+          function displaySwap(){
+            var sadnessText = "You're Sad. You could use a hug...and a drink";
+            var sadButton= "sad-button";
+            var happinessText= "You're happy! Great, let's celebrate!";
+            var happyButton = "happy-button";
+            var angerText= "You're angry. It's OK, let's calm you down";
+            var angerButton= "angry-button";
+            var fearText= "You're afraid! How about some liquid courage?";
+            var fearButton = "fear-button"
+            var disgustText= "You're disgusted. You cannot even with this day.";
+            var disgustButton="disgust-button";
+            var surprisedText= "You're surprised! Didn't see that one comin', huh?";
+            var surprisedButton= "surprised-button";
+            var neutralText = "Damn! Do you play poker? We can't tell what you're feeling. How about a rando drink?";
+            var neutralButton = "neutral-button";
+
+
+            if(emoResults==='happiness'){
+              $("#new-text").text(happinessText);
+              $("#drink-button").attr("id", happyButton);
+            }
+            else if(emoResults=='sadness'){
+              $("#new-text").text(sadnessText);
+              $("#drink-button").attr("id", sadButton);
+
+            }
+
+            else if(emoResults==='angry'){
+              $("#new-text").text(angerText);
+              $("#drink-button").attr("id", angerButton);
+            }
+
+           else if(emoResults==="fear"){
+              $("#new-text").text(fearText);
+              $("#drink-button").attr("id", fearButton);
+            }
+
+           else if(emoResults=== "digsust"){
+            $("#new-text").text(disgustText);
+            $("#drink-button").attr("id", disgustButton);
+           }
+           else if(emoResults=="surprised"){
+            $("#new-text").text(surprisedText);
+            $("#drink-button").attr("id", surprisedButton);
+           }
+           else if (emoResults==="neutral"){
+            $("#new-text").text(neutralText);
+            $("#drink-button").attr("id", neutralButton);
+           }
+
+
+
+          }
         });
  
-      console.log(newImg);
- 
-    });
  
  
  
@@ -107,7 +195,3 @@ $(document).ready(function () {
  
  
  
- 
- 
- 
-  })

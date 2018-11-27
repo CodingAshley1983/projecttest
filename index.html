@@ -45,7 +45,7 @@
                        
                   <!-- Form -->
                   <form method='post' action='' enctype="multipart/form-data">
-                    Select Image : <input type='file' accept="image/*" name='file' id="imageInput" class="form-control" ><br>
+                    Select Image : <input type='file' accept="image/*" data-max-size= "5000"  on-change= "previewFile()" name='file' id="imageInput" class="form-control" ><br>
                     <input type='submit'  class='btn btn-info' value='upload' id='uploadBtn'>
                     <button type="button" class="close" data-dismiss="modal">Close</button>
                   </form>
@@ -67,7 +67,7 @@
         </div>
             <div class="row imageRow">
                 
-            <!-- <img src="https://images-na.ssl-images-amazon.com/images/I/41ITbfq2pnL.jpg" height="100px" width="100px"> -->
+           
                 </div>
              
    

@@ -34,6 +34,7 @@ body {
     margin: 0 auto;
     height: 600px;
     width: 450px;
+    
 }
 .card-img-top{
     padding-top: 1%;
@@ -43,6 +44,3 @@ body {
     width: 400px;
 }
 
-.drink-button {
-    background-color: green;
-}
