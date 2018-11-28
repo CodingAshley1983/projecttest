@@ -1,6 +1,7 @@
 var storageRef;
 var uploadTask;
 var downloadURLRef;
+var emoResultsRef;
 
 function uploadProgress(snapshot) {
   // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
@@ -91,27 +92,28 @@ function displaySwap() {
   var neutralButton = "neutral-button";
 
 
-  if (emoResults === 'happiness') {
-    $("#new-text").text(happinessText);
+  if (emoResultsRef === 'happiness') {
+    $(".card-text").text(happinessText);
     $("#drink-button").attr("id", happyButton);
-  } else if (emoResults == 'sadness') {
-    $("#new-text").text(sadnessText);
+
+  } else if (emoResultsRef == 'sadness') {
+    $(".card-text").text(sadnessText);
     $("#drink-button").attr("id", sadButton);
 
-  } else if (emoResults === 'angry') {
-    $("#new-text").text(angerText);
+  } else if (emoResultsRef === 'angry') {
+    $(".card-text").text(angerText);
     $("#drink-button").attr("id", angerButton);
-  } else if (emoResults === "fear") {
-    $("#new-text").text(fearText);
+  } else if (emoResultsRef === "fear") {
+    $(".card-text").text(fearText);
     $("#drink-button").attr("id", fearButton);
-  } else if (emoResults === "digsust") {
-    $("#new-text").text(disgustText);
+  } else if (emoResultsRef === "digsust") {
+    $(".card-text").text(disgustText);
     $("#drink-button").attr("id", disgustButton);
-  } else if (emoResults == "surprised") {
-    $("#new-text").text(surprisedText);
+  } else if (emoResultsRef == "surprised") {
+    $(".card-text").text(surprisedText);
     $("#drink-button").attr("id", surprisedButton);
-  } else if (emoResults === "neutral") {
-    $("#new-text").text(neutralText);
+  } else if (emoResultsRef === "neutral") {
+    $(".card-text").text(neutralText);
     $("#drink-button").attr("id", neutralButton);
   }
 }
@@ -165,9 +167,9 @@ $(document).ready(function () {
 
              console.log("Your emotional state is: " + emoResults);
            //FACE++ API END
-
+            emoResultsRef= emoResults;
              $("#drink-button").show();
-             displaySwap();
+             displaySwap(emoResultsRef);
 
            }
          }) 
