@@ -137,9 +137,9 @@ $(document).ready(function () {
   storageRef = firebase.storage().ref();
 
   // FACE++ API START
-  function faceCall(downloadURL){
+  function faceCall(){
   
-  var encodedimage = encodeURIComponent(downloadURL);
+  var encodedimage = encodeURIComponent(downloadURLRef);
   var queryURL = "https://api-us.faceplusplus.com/facepp/v3/detect?api_key=ZQFa2mbqu5lJQm4MXM45qkevtVK_CfBS&api_secret=TVvl2HCex_7KfpbGbHGlAQzRPff0AULF&image_url=" + encodedimage + "&return_attributes=emotion"
   //   // Performing AJAX GET request
 
