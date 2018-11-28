@@ -1,5 +1,6 @@
 var storageRef;
 var uploadTask;
+var downloadURLRef;
 
 function uploadProgress(snapshot) {
   // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
@@ -34,15 +35,16 @@ function uploadError(error) {
 }
 
 function uploadSuccess() {
-  uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+  uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
     console.log('File available at', downloadURL);
+    imgSwap(downloadURL);
+    downloadURLRef = downloadURL; //Make it global for later, except you should be able to do faceCall(downloadURL) to pass it in
+
+    $('#uploadModal').modal('hide')
+    $("#emo-button").show();
   });
 
-  console.log('File available at', downloadURL);
-  imgSwap(downloadURL);
 
-  $('#uploadModal').modal('hide')
-  $("#emo-button").show();
 }
 
 function imgSwap(image) {
@@ -69,8 +71,7 @@ function upload() {
   uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
     uploadProgress,
     uploadError,
-    uploadSuccess)
-    .then(function(poo){console.log(poo);});
+    uploadSuccess);
 }
 
 function displaySwap() {
