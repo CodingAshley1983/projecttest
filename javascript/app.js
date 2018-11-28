@@ -1,4 +1,5 @@
 var storageRef;
+var uploadTask;
 
 function uploadProgress(snapshot) {
   // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
@@ -32,13 +33,16 @@ function uploadError(error) {
   }
 }
 
-function uploadSuccess(downloadURL) {
+function uploadSuccess() {
+  uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+    console.log('File available at', downloadURL);
+  });
+
   console.log('File available at', downloadURL);
   imgSwap(downloadURL);
 
   $('#uploadModal').modal('hide')
   $("#emo-button").show();
-  console.log(newImg);
 }
 
 function imgSwap(image) {
@@ -59,13 +63,14 @@ function upload() {
   };
 
   // Upload file and metadata to the object 'images/mountains.jpg'
-  var uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
+  uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
 
   // Listen for state changes, errors, and completion of the upload.
   uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
     uploadProgress,
     uploadError,
-    uploadSuccess);
+    uploadSuccess)
+    .then(function(poo){console.log(poo);});
 }
 
 function displaySwap() {
