@@ -3,6 +3,8 @@ var uploadTask;
 var downloadURLRef;
 var emoResultsRef;
 
+
+
 function uploadProgress(snapshot) {
   // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
   var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -43,6 +45,7 @@ function uploadSuccess() {
 
     $('#uploadModal').modal('hide')
     $("#emo-button").show();
+
   });
 
 
@@ -73,6 +76,7 @@ function upload() {
     uploadProgress,
     uploadError,
     uploadSuccess);
+    $(".card-text").text("Awww, cute. Now let's guess your feels...")
 }
 
 function displaySwap() {
@@ -96,7 +100,7 @@ function displaySwap() {
     $(".card-text").text(happinessText);
     $("#drink-button").attr("id", happyButton);
 
-  } else if (emoResultsRef == 'sadness') {
+  } else if (emoResultsRef === 'sadness') {
     $(".card-text").text(sadnessText);
     $("#drink-button").attr("id", sadButton);
 
@@ -109,7 +113,7 @@ function displaySwap() {
   } else if (emoResultsRef === "digsust") {
     $(".card-text").text(disgustText);
     $("#drink-button").attr("id", disgustButton);
-  } else if (emoResultsRef == "surprised") {
+  } else if (emoResultsRef === "surprised") {
     $(".card-text").text(surprisedText);
     $("#drink-button").attr("id", surprisedButton);
   } else if (emoResultsRef === "neutral") {
@@ -169,6 +173,7 @@ $(document).ready(function () {
            //FACE++ API END
             emoResultsRef= emoResults;
              $("#drink-button").show();
+             $("#emo-button").hide();
              displaySwap(emoResultsRef);
 
            }
