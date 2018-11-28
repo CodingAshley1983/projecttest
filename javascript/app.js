@@ -104,6 +104,7 @@ $(document).ready(function () {
               console.log("this is file a:", a);
               $('#uploadModal').modal('hide');
               console.log(newImg);
+
               var faceimage= a;
             
 
@@ -111,6 +112,7 @@ $(document).ready(function () {
              function faceCall(){
               
               console.log("This is the faceimage", faceimage);
+              
               var encodedimage = encodeURIComponent(faceimage);
               var queryURL = "https://api-us.faceplusplus.com/facepp/v3/detect?api_key=ZQFa2mbqu5lJQm4MXM45qkevtVK_CfBS&api_secret=TVvl2HCex_7KfpbGbHGlAQzRPff0AULF&image_url=" + encodedimage + "&return_attributes=emotion"
               // Performing AJAX GET request
