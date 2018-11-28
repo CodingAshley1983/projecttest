@@ -136,46 +136,46 @@ $(document).ready(function () {
 
   storageRef = firebase.storage().ref();
 
-  //  //FACE++ API START
-  //  function faceCall(){
-  //   var faceImage = " https://imgur.com/YSXAyZO";
-  //   var encodedimage = encodeURIComponent(faceImage);
-  //   var queryURL = "https://api-us.faceplusplus.com/facepp/v3/detect?api_key=ZQFa2mbqu5lJQm4MXM45qkevtVK_CfBS&api_secret=TVvl2HCex_7KfpbGbHGlAQzRPff0AULF&image_url=" + encodedimage + "&return_attributes=emotion"
+  // FACE++ API START
+  function faceCall(downloadURL){
+  
+  var encodedimage = encodeURIComponent(downloadURL);
+  var queryURL = "https://api-us.faceplusplus.com/facepp/v3/detect?api_key=ZQFa2mbqu5lJQm4MXM45qkevtVK_CfBS&api_secret=TVvl2HCex_7KfpbGbHGlAQzRPff0AULF&image_url=" + encodedimage + "&return_attributes=emotion"
   //   // Performing AJAX GET request
 
-  //   $.ajax({
-  //       url: queryURL,
-  //       method: "POST"
-  //     })
+  $.ajax({
+    url: queryURL,
+       method: "POST"
+    })
   //     // After data comes back from the request
-  //     .then(function (response) {
-  //       // storing the data from the AJAX request in the results variable
-  //       var results = response.faces[0].attributes.emotion;
-  //       console.log(results);
-  //       // Creating an array of the Objects key values and detriming the highest value
-  //       var arr = Object.keys(results).map(function (key) {
-  //         return results[key];
-  //       });
-  //       var max = Math.max.apply(null, arr);
-  //       console.log("highest key value: " + max);
-  //       // Creating a forEach loop to determin which emotion object is associated to the highest key value
-  //       Object.keys(results).forEach(function (key) {
-  //         if (results[key] === max) {
-  //           var emoResults = key;
+    .then(function (response) {
+         // storing the data from the AJAX request in the results variable
+         var results = response.faces[0].attributes.emotion;
+       console.log(results);
+         // Creating an array of the Objects key values and detriming the highest value
+         var arr = Object.keys(results).map(function (key) {
+         return results[key];
+         });
+        var max = Math.max.apply(null, arr);
+         console.log("highest key value: " + max);
+         // Creating a forEach loop to determin which emotion object is associated to the highest key value
+         Object.keys(results).forEach(function (key) {
+           if (results[key] === max) {
+             var emoResults = key;
 
-  //           console.log("Your emotional state is: " + emoResults);
-  //           //FACE++ API END
+             console.log("Your emotional state is: " + emoResults);
+           //FACE++ API END
 
-  //           $("#drink-button").show();
-  //           displaySwap();
+             $("#drink-button").show();
+             displaySwap();
 
-  //         }
-  //       }) 
-  //     })
-  //   };
+           }
+         }) 
+       })
+     };
 
   //text and image swap based on emotional result
 
   $("#uploadBtn").on("click", upload);
-  // $("#emo-button").on("click", faceCall);
-});
+  $("#emo-button").on("click", faceCall);
+  });
