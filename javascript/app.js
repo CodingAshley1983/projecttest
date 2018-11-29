@@ -5,6 +5,8 @@ var emoResultsRef;
 
 
 
+
+
 function uploadProgress(snapshot) {
   // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
   var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -122,10 +124,11 @@ function displaySwap() {
   }
 }
 
-  //cocktail DB and drink receipe array call:
+  //cocktail DB and drink receipe  call:
     //  var cocktailQuery="https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
     var drinkURL="https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i="; 
     var options;
+    var pass;
    var happy= ['14360', '14578', '14730', '15615', '15395', '12738', '17266', '17827', '17190', '14107', '17224', '16958', '13807', '15182', '12560', '13940', '15200', '11024', '15951'];
    var fear= [14642,
        14688,
@@ -260,7 +263,9 @@ function displaySwap() {
  $(document).on("click", "#happy-button", function () {
   console.log("Your happy button is working!")
   options = Math.floor(Math.random() * happy.length);
-  console.log(options)
+  pass= happy[options];
+ 
+  
   drinkCall();
  });
 
@@ -269,8 +274,8 @@ function displaySwap() {
       $(document).on("click", "#fear-button", function () {
   console.log("Your fear button is working!")
   options = Math.floor(Math.random() * fear.length);
-  console.log(options)
-  drinkCall();
+  pass= fear[options];
+  drinkCall(pass);
  });
 
 
@@ -279,8 +284,8 @@ function displaySwap() {
    $(document).on("click", "#anger-button", function () {
   console.log("Your fear button is working!")
   options = Math.floor(Math.random() * anger.length);
-  console.log(options)
-  drinkCall();
+  pass=anger[options];
+  drinkCall(pass);
  });
 
 
@@ -288,37 +293,41 @@ function displaySwap() {
   $(document).on("click", "#sad-button", function () {
   console.log("Your sad button is working!")
   options = Math.floor(Math.random() * sadness.length);
-  console.log(options)
-  drinkCall();
+  pass= sadness[options];
+  
+  drinkCall(pass);
  });
 
  // //Disgust
   $(document).on("click", "#disigust-button", function () {
   console.log("Your disgust button is working!")
   options = Math.floor(Math.random() * disgust.length);
-  console.log(options)
-  drinkCall();
+  pass= disgust[options];
+  
+  drinkCall(pass);
  });
  // //surprise
  $(document).on("click", "#surprised-button", function () {
   console.log("Your surprise button is working!")
   options = Math.floor(Math.random() * surprise.length);
-  console.log(options)
-  drinkCall();
+  pass= surprise[options]
+  drinkCall(pass);
  });
 
+ //neutral
  $(document).on("click", "#neutral", function(){
   console.log("Your neutral button is working!")
   options = Math.floor(Math.random() * neutral.length);
-  console.log(options)
-  drinkCall();
+  pass=neutral[options];
+  console.log()
+  drinkCall(pass);
  });
  
 
  //cocktailDB call 
  function drinkCall(){
  $.ajax({
-   url: drinkURL + happy[options],
+   url: drinkURL + pass,
    method: "GET"
  }).then(function (response) {
 
@@ -331,6 +340,8 @@ function displaySwap() {
              console.log(response.drinks[0].strIngredient3);
              console.log(response.drinks[0].strIngredient4);
              console.log(response.drinks[0].strIngredient5);
+             console.log(response.drinks[0].strIngredient6);
+
    }); 
    //           // drink name
    //           $(".drink").text("Drink Name: " + response.drinks[0].strDrink);
@@ -342,6 +353,7 @@ function displaySwap() {
    //           var p4 = $("<p>").text("Ingredient4: " + response.drinks[0].strIngredient4);
    //           var p5 = $("<p>").text("Ingredient5: " + response.drinks[0].strIngredient5);
    //           var p6 = $("<p>").text("Ingredient6: " + response.drinks[0].strIngredient6);
+                // var p7 = $("<p>").text("Instructions: " + response.drinks[0].strInstructions);
                   
    //           $(".ingredients").append(p1, p2, p3, p4, p5, p6);
    //           // images
