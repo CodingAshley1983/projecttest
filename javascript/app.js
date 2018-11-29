@@ -171,7 +171,7 @@ function displaySwap() {
      ]
    
    
-     var Sadness = [17105,
+     var sadness = [17105,
        15288,
        16134,
        16271,
@@ -195,7 +195,7 @@ function displaySwap() {
      ]
   
   
-     var Disgust= [15082,
+     var disgust= [15082,
        15515,
        15743,
        16295,
