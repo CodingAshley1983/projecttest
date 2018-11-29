@@ -1,12 +1,12 @@
 body {
-    background-image: url(https://alethakuschan.files.wordpress.com/2008/05/like-water.jpg);
-      
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyWliuA7cuzYDQIc0kCl6uktA--ZwW1kJMN3F67mgnJtZoUhmK);
+      background-repeat: none;
 }
 .container-head {
     
    background-color: rgb(63, 19, 63);
-   padding-left: 30%;
-   
+   padding-left: 33%;
+
    /* align-content: center; */
     font-family: 'Fredericka the Great', cursive;
     font-size: 80px;
@@ -17,8 +17,8 @@ body {
 
 .container-main {
     background-color: rgb(31, 28, 28);
-    height: 700px;
-    width: 60%;
+    height: 650px;
+    width: 45%;
     justify-content: center;
     margin: 0 auto;
     background-image: url(http://24.media.tumblr.com/06d078d7bb17e36c08c4488c388b9e32/tumblr_mhesviJUn11s1jj9ro1_500.gif); 

@@ -76,7 +76,7 @@ function upload() {
     uploadProgress,
     uploadError,
     uploadSuccess);
-    $(".card-text").text("Awww, cute. Now let's guess your feels...")
+  $(".card-text").text("Awww, cute. Now let's guess your feels...")
 }
 
 function displaySwap() {
@@ -122,6 +122,236 @@ function displaySwap() {
   }
 }
 
+  //cocktail DB and drink receipe array call:
+    //  var cocktailQuery="https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
+    var drinkURL="https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i="; 
+    var options;
+   var happy= ['14360', '14578', '14730', '15615', '15395', '12738', '17266', '17827', '17190', '14107', '17224', '16958', '13807', '15182', '12560', '13940', '15200', '11024', '15951'];
+   var fear= [14642,
+       14688,
+       15178,
+       15761,
+       14610,
+       16419,
+       17250,
+       17211,
+       16178,
+       16273,
+       11028,
+       14584,
+       17074,
+       11055,
+       13086,
+       17060,
+       11407,
+       11403,
+       17230
+     ]
+  
+   var anger=  [
+       14065,
+       12870,
+       15597,
+       16041,
+       13222,
+       13070,
+       13861,
+       14087,
+       17122,
+       12107,
+       14306,
+       16100,
+       13202,
+       11368,
+       11239,
+       17135
+     ]
+   
+   
+     var Sadness = [17105,
+       15288,
+       16134,
+       16271,
+       17020,
+       13194,
+       16998,
+       17245,
+       11000,
+       17229,
+       11008,
+       14071,
+       11118,
+       11119,
+       17288,
+       11117,
+       11120,
+       12798,
+       12800,
+       11157,
+       16047
+     ]
+  
+  
+     var Disgust= [15082,
+       15515,
+       15743,
+       16295,
+       17118,
+       16403,
+       17120,
+       17220,
+       17380,
+       13128,
+       14466,
+       17829,
+       12101,
+       11023,
+       14598,
+       13581,
+       17222,
+       13070
+     ]
+   
+   
+  
+     var surprise= [14602,
+       16108,
+       16333,
+       16942,
+       13940,
+       17184,
+       14782,
+       11798,
+       11872,
+       13535,
+       16992,
+       13072,
+       13198,
+       13652,
+       16405,
+       14360,
+       11010,
+       13899,
+       11053,
+       15567,
+       11034
+     ]
+    
+     var neutral= [14598,
+      13282,
+      13395,
+      11145,
+      17196,
+      11291,
+      11006,
+      13731,
+      13162,
+      11012,
+      11013,
+      11014,
+      11020,
+      12562,
+      11021,
+      12792,
+      11026,
+      16202]
+
+ //Happy
+ $(document).on("click", "#happy-button", function () {
+  console.log("Your happy button is working!")
+  options = Math.floor(Math.random() * happy.length);
+  console.log(options)
+  drinkCall();
+ });
+
+
+ // //Fear
+      $(document).on("click", "#fear-button", function () {
+  console.log("Your fear button is working!")
+  options = Math.floor(Math.random() * fear.length);
+  console.log(options)
+  drinkCall();
+ });
+
+
+
+     //Anger
+   $(document).on("click", "#anger-button", function () {
+  console.log("Your fear button is working!")
+  options = Math.floor(Math.random() * anger.length);
+  console.log(options)
+  drinkCall();
+ });
+
+
+  //Sadness
+  $(document).on("click", "#sad-button", function () {
+  console.log("Your sad button is working!")
+  options = Math.floor(Math.random() * sadness.length);
+  console.log(options)
+  drinkCall();
+ });
+
+ // //Disgust
+  $(document).on("click", "#disigust-button", function () {
+  console.log("Your disgust button is working!")
+  options = Math.floor(Math.random() * disgust.length);
+  console.log(options)
+  drinkCall();
+ });
+ // //surprise
+ $(document).on("click", "#surprised-button", function () {
+  console.log("Your surprise button is working!")
+  options = Math.floor(Math.random() * surprise.length);
+  console.log(options)
+  drinkCall();
+ });
+
+ $(document).on("click", "#neutral", function(){
+  console.log("Your neutral button is working!")
+  options = Math.floor(Math.random() * neutral.length);
+  console.log(options)
+  drinkCall();
+ });
+ 
+
+ //cocktailDB call 
+ function drinkCall(){
+ $.ajax({
+   url: drinkURL + happy[options],
+   method: "GET"
+ }).then(function (response) {
+
+
+   console.log(response)
+             console.log(response.drinks[0].strDrink);
+             console.log(response.drinks[0].strDrinkThumb);
+             console.log(response.drinks[0].strIngredient1);
+             console.log(response.drinks[0].strIngredient2);
+             console.log(response.drinks[0].strIngredient3);
+             console.log(response.drinks[0].strIngredient4);
+             console.log(response.drinks[0].strIngredient5);
+   }); 
+   //           // drink name
+   //           $(".drink").text("Drink Name: " + response.drinks[0].strDrink);
+   //           // ingredients
+   //           var ingredient = $("<div>");
+   //           var p1 = $("<p>").text("Ingredient1: " + response.drinks[0].strIngredient1);
+   //           var p2 = $("<p>").text("Ingredient2: " + response.drinks[0].strIngredient2);
+   //           var p3 = $("<p>").text("Ingredient3: " + response.drinks[0].strIngredient3);
+   //           var p4 = $("<p>").text("Ingredient4: " + response.drinks[0].strIngredient4);
+   //           var p5 = $("<p>").text("Ingredient5: " + response.drinks[0].strIngredient5);
+   //           var p6 = $("<p>").text("Ingredient6: " + response.drinks[0].strIngredient6);
+                  
+   //           $(".ingredients").append(p1, p2, p3, p4, p5, p6);
+   //           // images
+   //           var pic = $("<img>");
+   //           pic.attr("src", response.drinks[0].strDrinkThumb);
+   //           pic.attr("height", "200");
+   //           $(".image").append(pic);
+
+ }
+
 $(document).ready(function () {
   // Initialize Firebase
   var config = {
@@ -143,46 +373,56 @@ $(document).ready(function () {
   storageRef = firebase.storage().ref();
 
   // FACE++ API START
-  function faceCall(){
-  
-  var encodedimage = encodeURIComponent(downloadURLRef);
-  var queryURL = "https://api-us.faceplusplus.com/facepp/v3/detect?api_key=ZQFa2mbqu5lJQm4MXM45qkevtVK_CfBS&api_secret=TVvl2HCex_7KfpbGbHGlAQzRPff0AULF&image_url=" + encodedimage + "&return_attributes=emotion"
-  //   // Performing AJAX GET request
+  function faceCall() {
 
-  $.ajax({
-    url: queryURL,
-       method: "POST"
-    })
-  //     // After data comes back from the request
-    .then(function (response) {
-         // storing the data from the AJAX request in the results variable
-         var results = response.faces[0].attributes.emotion;
-       console.log(results);
-         // Creating an array of the Objects key values and detriming the highest value
-         var arr = Object.keys(results).map(function (key) {
-         return results[key];
-         });
+    var encodedimage = encodeURIComponent(downloadURLRef);
+    var queryURL = "https://api-us.faceplusplus.com/facepp/v3/detect?api_key=ZQFa2mbqu5lJQm4MXM45qkevtVK_CfBS&api_secret=TVvl2HCex_7KfpbGbHGlAQzRPff0AULF&image_url=" + encodedimage + "&return_attributes=emotion"
+    //   // Performing AJAX GET request
+
+    $.ajax({
+        url: queryURL,
+        method: "POST"
+      })
+      //     // After data comes back from the request
+      .then(function (response) {
+        // storing the data from the AJAX request in the results variable
+        var results = response.faces[0].attributes.emotion;
+        console.log(results);
+        // Creating an array of the Objects key values and detriming the highest value
+        var arr = Object.keys(results).map(function (key) {
+          return results[key];
+        });
         var max = Math.max.apply(null, arr);
-         console.log("highest key value: " + max);
-         // Creating a forEach loop to determin which emotion object is associated to the highest key value
-         Object.keys(results).forEach(function (key) {
-           if (results[key] === max) {
-             var emoResults = key;
+        console.log("highest key value: " + max);
+        // Creating a forEach loop to determin which emotion object is associated to the highest key value
+        Object.keys(results).forEach(function (key) {
+          if (results[key] === max) {
+            var emoResults = key;
 
-             console.log("Your emotional state is: " + emoResults);
-           //FACE++ API END
-            emoResultsRef= emoResults;
-             $("#drink-button").show();
-             $("#emo-button").hide();
-             displaySwap(emoResultsRef);
+            console.log("Your emotional state is: " + emoResults);
+            //FACE++ API END
+            emoResultsRef = emoResults;
+            $("#drink-button").show();
+            $("#emo-button").hide();
+            displaySwap(emoResultsRef);
 
-           }
-         }) 
-       })
-     };
+          }
+        })
+      })
+  };
+
 
   //text and image swap based on emotional result
 
-  $("#uploadBtn").on("click", upload);
-  $("#emo-button").on("click", faceCall);
-  });
+
+
+  
+$("#uploadBtn").on("click", upload);
+$("#emo-button").on("click", faceCall);
+
+ });
+
+
+
+
+
