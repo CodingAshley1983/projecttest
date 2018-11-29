@@ -106,19 +106,23 @@ function displaySwap() {
     $(".card-text").text(sadnessText);
     $("#drink-button").attr("id", sadButton);
 
-  } else if (emoResultsRef === 'angry') {
+  } else if (emoResultsRef === 'anger') {
     $(".card-text").text(angerText);
     $("#drink-button").attr("id", angerButton);
-  } else if (emoResultsRef === "fear") {
+  } 
+    else if (emoResultsRef === "fear") {
     $(".card-text").text(fearText);
     $("#drink-button").attr("id", fearButton);
-  } else if (emoResultsRef === "digsust") {
+  } 
+    else if (emoResultsRef === "digsust") {
     $(".card-text").text(disgustText);
     $("#drink-button").attr("id", disgustButton);
-  } else if (emoResultsRef === "surprised") {
+  } 
+    else if (emoResultsRef === "surprise") {
     $(".card-text").text(surprisedText);
     $("#drink-button").attr("id", surprisedButton);
-  } else if (emoResultsRef === "neutral") {
+  } 
+    else if (emoResultsRef === "neutral") {
     $(".card-text").text(neutralText);
     $("#drink-button").attr("id", neutralButton);
   }
