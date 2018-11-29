@@ -1,5 +1,5 @@
 body {
-    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyWliuA7cuzYDQIc0kCl6uktA--ZwW1kJMN3F67mgnJtZoUhmK);
+    background-image: url(http://2.bp.blogspot.com/-g58_z4rHrWQ/T5NC0dDMojI/AAAAAAAAAPU/N_rrrkTlOpQ/s1600/Alice+close-up.jpg);
       background-repeat: none;
 }
 .container-head {
@@ -26,10 +26,6 @@ body {
 
     
 }
-
-
-
-
 .card {
     margin: 0 auto;
     height: 600px;
@@ -44,3 +40,18 @@ body {
     width: 400px;
 }
 
+#drink-body {
+    height:800px;
+    width:650px;
+    font-size: 12px;
+}
+
+
+@media only screen and (max-width: 600px){
+    .container-main{
+        width: 100%;
+    }
+    .container-head{
+        width: 100%;
+    }
+}

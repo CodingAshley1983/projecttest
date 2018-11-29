@@ -133,6 +133,7 @@ function displaySwap() {
     var drinkURL="https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i="; 
     var options;
     var pass;
+    
    var happy= ['14360', '14578', '14730', '15615', '15395', '12738', '17266', '17827', '17190', '14107', '17224', '16958', '13807', '15182', '12560', '13940', '15200', '11024', '15951'];
    var fear= [14642,
        14688,
@@ -268,9 +269,7 @@ function displaySwap() {
   console.log("Your happy button is working!")
   options = Math.floor(Math.random() * happy.length);
   pass= happy[options];
- 
-  
-  drinkCall();
+  drinkCall(pass);
  });
 
 
@@ -335,7 +334,6 @@ function displaySwap() {
    method: "GET"
  }).then(function (response) {
 
-
    console.log(response)
              console.log(response.drinks[0].strDrink);
              console.log(response.drinks[0].strDrinkThumb);
@@ -345,28 +343,34 @@ function displaySwap() {
              console.log(response.drinks[0].strIngredient4);
              console.log(response.drinks[0].strIngredient5);
              console.log(response.drinks[0].strIngredient6);
+             
 
-   }); 
-   //           // drink name
-   //           $(".drink").text("Drink Name: " + response.drinks[0].strDrink);
-   //           // ingredients
-   //           var ingredient = $("<div>");
-   //           var p1 = $("<p>").text("Ingredient1: " + response.drinks[0].strIngredient1);
-   //           var p2 = $("<p>").text("Ingredient2: " + response.drinks[0].strIngredient2);
-   //           var p3 = $("<p>").text("Ingredient3: " + response.drinks[0].strIngredient3);
-   //           var p4 = $("<p>").text("Ingredient4: " + response.drinks[0].strIngredient4);
-   //           var p5 = $("<p>").text("Ingredient5: " + response.drinks[0].strIngredient5);
-   //           var p6 = $("<p>").text("Ingredient6: " + response.drinks[0].strIngredient6);
-                // var p7 = $("<p>").text("Instructions: " + response.drinks[0].strInstructions);
+   var response= response.drinks[0];
+              
+              $("#drink-modal").show();
+             // drink name
+             $("#drink-title").text("Drink Name: " + response.strDrink);
+             // ingredients
+             var ingredient = $("<div>");
+             var p1 = $("<p>").text("Ingredient 1: " + response.strIngredient1);
+             var p2 = $("<p>").text("Ingredient 2: " + response.strIngredient2);
+             var p3 = $("<p>").text("Ingredient 3: " + response.strIngredient3);
+             var p4 = $("<p>").text("Ingredient 4: " + response.strIngredient4);
+             var p5 = $("<p>").text("Ingredient 5: " + response.strIngredient5);
+             var p6 = $("<p>").text("Ingredient 6: " + response.strIngredient6);
+             var p7 = $("<p>").text("Instructions: " + response.strInstructions);
                   
-   //           $(".ingredients").append(p1, p2, p3, p4, p5, p6);
-   //           // images
-   //           var pic = $("<img>");
-   //           pic.attr("src", response.drinks[0].strDrinkThumb);
-   //           pic.attr("height", "200");
-   //           $(".image").append(pic);
-
- }
+             $("#drink-body").append(p1, p2, p3, p4, p5, p6, p7);
+             // images
+            
+             $("#drink-image").attr("src", response.strDrinkThumb);
+            //  pic.attr("height", "200");
+            //  $("#drink-image").append(pic);
+ });
+            $("#drink-close").on("click", function(){
+              $("#drink-modal").hide();
+            });
+}
 
 $(document).ready(function () {
   // Initialize Firebase
@@ -385,6 +389,7 @@ $(document).ready(function () {
   $("#uploadModal").hide();
   $("#drink-button").hide();
   $("#emo-button").hide();
+  $("#drink-modal").hide();
 
   storageRef = firebase.storage().ref();
 
