@@ -354,7 +354,7 @@ function displaySwap() {
    $("#drink-body").text("")           
               $("#drink-modal").show();
              // drink name
-             $("#drink-title").text("Drink Name: " + response.strDrink);
+             $("#drink-title").text(response.strDrink);
              // ingredients
              var ingredient = $("<div>");
              var p1 = $("<p>").text("Ingredient 1: " + response.strIngredient1);

@@ -47,7 +47,11 @@ body {
     width: 200px;
     background-color:black;
 }
-
+.card-body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 #drink-modal {
     width: 600px;
     max-width: 100%;
