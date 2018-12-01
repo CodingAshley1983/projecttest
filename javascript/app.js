@@ -271,6 +271,7 @@ function displaySwap() {
   pass= happy[options];
   console.log("Before Splice: ", happy)
   happy.splice(options, 1);
+  
   console.log("After splice:", happy)
   drinkCall(pass);
  });
