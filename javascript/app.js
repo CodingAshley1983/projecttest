@@ -135,7 +135,7 @@ function displaySwap() {
     var options;
     var pass;
     
-   var happy= ['14360', '14578', '14730', '15615', '15395', '12738', '17266', '17827', '17190', '14107', '17224', '16958', '13807', '15182', '12560', '13940', '15200', '11024', '15951'];
+   var happy= ['14360', '14578', '14730', '15615', '15395', '12738', '17266', '17827', '17190', '14107', '17224', '16958', '13807', '15182', '12560', '13940', '15200', '11024'];
    var fear= [14642,
        14688,
        15178,
@@ -151,10 +151,7 @@ function displaySwap() {
        17074,
        11055,
        13086,
-       17060,
-       11407,
-       11403,
-       17230
+       17060
      ]
   
    var anger=  [
@@ -171,9 +168,7 @@ function displaySwap() {
        14306,
        16100,
        13202,
-       11368,
-       11239,
-       17135
+       11368
      ]
    
    
@@ -194,10 +189,6 @@ function displaySwap() {
        17288,
        11117,
        11120,
-       12798,
-       12800,
-       11157,
-       16047
      ]
   
   
@@ -239,11 +230,7 @@ function displaySwap() {
        13652,
        16405,
        14360,
-       11010,
-       13899,
-       11053,
-       15567,
-       11034
+       11010
      ]
     
      var neutral= [14598,
@@ -270,9 +257,8 @@ function displaySwap() {
   console.log("Your happy button is working!")
   options = Math.floor(Math.random() * happy.length);
   pass= happy[options];
-  console.log("Before Splice: ", happy)
   happy.splice(options, 1);
-  console.log("After splice:", happy)
+
 
   drinkCall(pass);
  });
@@ -283,6 +269,7 @@ function displaySwap() {
   console.log("Your fear button is working!")
   options = Math.floor(Math.random() * fear.length);
   pass= fear[options];
+  fear.splice(options, 1);
   drinkCall(pass);
  });
 
@@ -293,6 +280,7 @@ function displaySwap() {
   console.log("Your fear button is working!")
   options = Math.floor(Math.random() * anger.length);
   pass=anger[options];
+  anger.splice(options, 1);
   drinkCall(pass);
  });
 
@@ -302,7 +290,7 @@ function displaySwap() {
   console.log("Your sad button is working!")
   options = Math.floor(Math.random() * sadness.length);
   pass= sadness[options];
-  
+  sadness.splice(options, 1);
   drinkCall(pass);
  });
 
@@ -311,7 +299,7 @@ function displaySwap() {
   console.log("Your disgust button is working!")
   options = Math.floor(Math.random() * disgust.length);
   pass= disgust[options];
-  
+  disgust.splice(options, 1);
   drinkCall(pass);
  });
  // //surprise
@@ -319,6 +307,7 @@ function displaySwap() {
   console.log("Your surprise button is working!")
   options = Math.floor(Math.random() * surprise.length);
   pass= surprise[options]
+  surprise.splice(options, 1);
   drinkCall(pass);
  });
 
@@ -327,7 +316,7 @@ function displaySwap() {
   console.log("Your neutral button is working!")
   options = Math.floor(Math.random() * neutral.length);
   pass=neutral[options];
-  console.log()
+  neutral.splice(options, 1);
   drinkCall(pass);
  });
  

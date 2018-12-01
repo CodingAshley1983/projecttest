@@ -13,7 +13,7 @@ body {
     height: 100px;
     color: white;
     opacity: .8;
-    margin-bottom: 20px;
+    
 }
 
 .container-main {
@@ -40,14 +40,14 @@ body {
     text-align: center;
 }
 .card-img-top{
-    padding-top: 10px;
+   
     margin: 0 auto;
     justify-content: center;
     height: 250px;
     width: 200px;
     background-color:black;
 }
-.card-body{
+.card-footer{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -73,6 +73,10 @@ body {
 
 
 @media only screen and (max-width: 600px){
+
+    .btn{
+        flex-basis: 100%;
+    }
     .container-main{
         width: 100%;
         margin: 0 auto;
@@ -83,7 +87,7 @@ body {
         margin: 0 auto;
         text-align: center;
         line-height: 100px;
-        margin-bottom:20px;
+      
         padding: 0;
 
     }
