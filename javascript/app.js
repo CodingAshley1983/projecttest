@@ -318,7 +318,7 @@ function displaySwap() {
  });
 
  //neutral
- $(document).on("click", "#neutral", function(){
+ $(document).on("click", "#neutral-button", function(){
   console.log("Your neutral button is working!")
   options = Math.floor(Math.random() * neutral.length);
   pass=neutral[options];
