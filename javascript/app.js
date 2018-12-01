@@ -47,6 +47,7 @@ function uploadSuccess() {
 
     $('#uploadModal').modal('hide')
     $("#emo-button").show();
+    $(".card-text").text("Awww, cute. Now let's guess your feels...")
 
   });
 
@@ -78,7 +79,7 @@ function upload() {
     uploadProgress,
     uploadError,
     uploadSuccess);
-  $(".card-text").text("Awww, cute. Now let's guess your feels...")
+  
 }
 
 function displaySwap() {
@@ -269,7 +270,10 @@ function displaySwap() {
   console.log("Your happy button is working!")
   options = Math.floor(Math.random() * happy.length);
   pass= happy[options];
- 
+  console.log("Before Splice: ", happy)
+  happy.splice(options, 1);
+  console.log("After splice:", happy)
+
   drinkCall(pass);
  });
 
