@@ -269,6 +269,9 @@ function displaySwap() {
   console.log("Your happy button is working!")
   options = Math.floor(Math.random() * happy.length);
   pass= happy[options];
+  console.log("Before Splice: ", happy)
+  happy.splice(options, 1);
+  console.log("After splice:", happy)
   drinkCall(pass);
  });
 
@@ -346,7 +349,7 @@ function displaySwap() {
              
 
    var response= response.drinks[0];
-              
+   $("#drink-body").text("")           
               $("#drink-modal").show();
              // drink name
              $("#drink-title").text("Drink Name: " + response.strDrink);
