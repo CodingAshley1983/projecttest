@@ -1,5 +1,5 @@
 body {
-    background-image: url(https://i.pinimg.com/originals/fa/2f/65/fa2f65c9438e082546a0349300283bdc.jpg);
+    background-image: url(http://2.bp.blogspot.com/-g58_z4rHrWQ/T5NC0dDMojI/AAAAAAAAAPU/N_rrrkTlOpQ/s1600/Alice+close-up.jpg);
       background-repeat: none;
 }
 .container-head {
@@ -32,47 +32,34 @@ body {
     width: 450px;
     
 }
-
-.card-text {
-padding-left: 20px;
-
-}
 .card-img-top{
     padding-top: 1%;
     margin: 0 auto;
     justify-content: center;
-    height: 300px;
-    width: 250px;
+    height: 450px;
+    width: 400px;
 }
 
 #drink-body {
     height:800px;
-
+    width:650px;
     font-size: 12px;
-    word-wrap: break-word;
 }
 
 
- @media only screen and (max-width: 600px){
-    body{
-        background-color: ghostwhite;
-    }
+@media only screen and (max-width: 600px){
     .container-main{
         width: 100%;
         margin: 0 auto;
     }
     .container-head{
         width: 100%;
-        font-size: 35px;
-        padding: 0;
+        font-size: 50px;
         margin: 0 auto;
-        text-align: center;
-        line-height: 100px;
-        margin-bottom:20px;
     }
 
-    /* card-img-top{
-        width:100%;
+    card-img-top{
+        width:80%;
         margin: 0 auto;
-    /* } */
- }  
+    }
+}

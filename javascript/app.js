@@ -269,8 +269,8 @@ function displaySwap() {
   console.log("Your happy button is working!")
   options = Math.floor(Math.random() * happy.length);
   pass= happy[options];
-  // console.log("Before Splice: ", happy)
-  // happy.splice(options, 1);
+  console.log("Before Splice: ", happy)
+  happy.splice(options, 1);
   
   console.log("After splice:", happy)
   drinkCall(pass);
