@@ -32,6 +32,9 @@ body {
     width: 450px;
     
 }
+.card-text{
+    padding-left:20px;
+}
 .card-img-top{
     padding-top: 1%;
     margin: 0 auto;
@@ -42,7 +45,7 @@ body {
 
 #drink-body {
     height:800px;
-    width:650px;
+  word-wrap: break-word;
     font-size: 12px;
 }
 
@@ -54,11 +57,14 @@ body {
     }
     .container-head{
         width: 100%;
-        font-size: 50px;
+        font-size: 35px;
         margin: 0 auto;
+        text-align: center;
+        line-height: 100px;
+        margin-bottom:20px;
     }
 
-    card-img-top{
+    .card-img-top{
         width:80%;
         margin: 0 auto;
     }
