@@ -30,7 +30,7 @@ body {
 }
 .card {
     margin: 0 auto;
-    height: 500px;
+    height: 550px;
     width: 450px;
     background-color: ghostwhite;
     
@@ -43,14 +43,15 @@ body {
    
     margin: 0 auto;
     justify-content: center;
-    height: 250px;
-    width: 200px;
+    height: 350px;
+    width: 300px;
     background-color:black;
 }
 .card-footer{
     display: flex;
     justify-content: center;
     flex-direction: column;
+
 }
 #drink-modal {
     width: 600px;
@@ -103,9 +104,17 @@ body {
         padding: 0;
 
     }
+    .card{
+        background-color: ghostwhite;
+        width:100vh;
+        height:100vh;
+    }
 
     .card-img-top{
         width:80%;
         margin: 0 auto;
+    }
+    .card-footer{
+        background-color:black;
     }
 }

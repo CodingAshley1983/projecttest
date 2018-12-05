@@ -6,12 +6,6 @@ var emoResultsRef;
 var filename;
 
 
-
-
-
-
-
-
 function uploadProgress(snapshot) {
   // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
   var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
