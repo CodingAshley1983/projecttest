@@ -1,7 +1,11 @@
 var storageRef;
 var uploadTask;
+var uploadRef;
 var downloadURLRef;
 var emoResultsRef;
+
+
+
 
 
 
@@ -43,8 +47,9 @@ function uploadSuccess() {
   uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
     console.log('File available at', downloadURL);
     imgSwap(downloadURL);
-    downloadURLRef = downloadURL; //Make it global for later, except you should be able to do faceCall(downloadURL) to pass it in
 
+    downloadURLRef = downloadURL; //Make it global for later, except you should be able to do faceCall(downloadURL) to pass it in
+    console.log("This is the filepath:", storageRef.path)
     $('#uploadModal').modal('hide')
     $("#emo-button").show();
     $(".card-text").text("Awww, cute. Now let's guess your feels...")
@@ -53,10 +58,35 @@ function uploadSuccess() {
 
 
 }
+function storageDelete() {
+
+  // Create a reference to the file to delete
+  
+  
+
+  // Delete the file
+ pathReference.delete().then(function () {
+    console.log("file deleted")
+    // File deleted successfully
+  }).catch(function (error) {
+    // Uh-oh, an error occurred!
+  });
+
+
+}
+
+
+
+
+
+
 
 function imgSwap(image) {
   $("#card-image").attr('src', image);
 }
+
+
+
 
 function upload() {
   event.preventDefault();
@@ -73,12 +103,15 @@ function upload() {
 
   // Upload file and metadata to the object 'images/mountains.jpg'
   uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
+  
 
   // Listen for state changes, errors, and completion of the upload.
   uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
     uploadProgress,
     uploadError,
-    uploadSuccess);
+    uploadSuccess,
+  
+ );
   
 }
 
@@ -323,6 +356,7 @@ function displaySwap() {
 
  //cocktailDB call 
  function drinkCall(){
+   
  $.ajax({
    url: drinkURL + pass,
    method: "GET"
@@ -344,6 +378,7 @@ function displaySwap() {
               $("#drink-modal").show();
              // drink name
              $("#drink-title").text(response.strDrink);
+             
              // ingredients
              var ingredient = $("<div>");
              var p1 = $("<p>").text("Ingredient 1: " + response.strIngredient1);
@@ -360,10 +395,14 @@ function displaySwap() {
              $("#drink-image").attr("src", response.strDrinkThumb);
             //  pic.attr("height", "200");
             //  $("#drink-image").append(pic);
+            storageDelete();
+           
  });
             $("#drink-close").on("click", function(){
               $("#drink-modal").hide();
+              
             });
+            
 }
 
 $(document).ready(function () {
@@ -386,6 +425,9 @@ $(document).ready(function () {
   $("#drink-modal").hide();
 
   storageRef = firebase.storage().ref();
+  
+  pathReference = storageRef.child("images/*");
+
 
   // FACE++ API START
   function faceCall() {
@@ -420,6 +462,7 @@ $(document).ready(function () {
             $("#drink-button").show();
             $("#emo-button").hide();
             displaySwap(emoResultsRef);
+            
 
           }
         })
@@ -434,6 +477,7 @@ $(document).ready(function () {
   
 $("#uploadBtn").on("click", upload);
 $("#emo-button").on("click", faceCall);
+
 
  });
 
