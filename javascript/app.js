@@ -3,6 +3,7 @@ var uploadTask;
 var uploadRef;
 var downloadURLRef;
 var emoResultsRef;
+var filename;
 
 
 
@@ -49,7 +50,7 @@ function uploadSuccess() {
     imgSwap(downloadURL);
 
     downloadURLRef = downloadURL; //Make it global for later, except you should be able to do faceCall(downloadURL) to pass it in
-    console.log("This is the filepath:", storageRef.path)
+    console.log("This is the file name:")
     $('#uploadModal').modal('hide')
     $("#emo-button").show();
     $(".card-text").text("Awww, cute. Now let's guess your feels...")
@@ -58,22 +59,7 @@ function uploadSuccess() {
 
 
 }
-function storageDelete() {
 
-  // Create a reference to the file to delete
-  
-  
-
-  // Delete the file
- pathReference.delete().then(function () {
-    console.log("file deleted")
-    // File deleted successfully
-  }).catch(function (error) {
-    console.log(error);
-  });
-
-
-}
 
 
 
@@ -95,6 +81,7 @@ function upload() {
   console.log(newImg[0].name)
 
   var file = newImg[0];
+  window.filename= newImg[0].name
 
   // Create the file metadata
   var metadata = {
@@ -103,7 +90,7 @@ function upload() {
 
   // Upload file and metadata to the object 'images/mountains.jpg'
   uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
-  
+  console.log(storageRef)
 
   // Listen for state changes, errors, and completion of the upload.
   uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
@@ -112,7 +99,22 @@ function upload() {
     uploadSuccess,
   
  );
-  
+
+}
+function storageDelete() {
+
+  // Create a reference to the file to delete
+
+console.log("Filename within the storagedelete function:", window.filename)
+
+storageRef.child('images/' + window.filename).delete().then(function () {
+    console.log("file deleted")
+    // File deleted successfully
+  }).catch(function (error) {
+    console.log(error);
+  });
+
+
 }
 
 function displaySwap() {
@@ -426,7 +428,7 @@ $(document).ready(function () {
 
   storageRef = firebase.storage().ref();
   
-  pathReference = storageRef.child("images/*");
+
 
 
   // FACE++ API START
