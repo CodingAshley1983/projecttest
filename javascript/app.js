@@ -69,7 +69,7 @@ function storageDelete() {
     console.log("file deleted")
     // File deleted successfully
   }).catch(function (error) {
-    // Uh-oh, an error occurred!
+    console.log(error);
   });
 
 
