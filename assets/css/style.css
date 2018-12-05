@@ -18,7 +18,7 @@ body {
 
 .container-main {
     background-color: rgb(31, 28, 28);
-    height: 550px;
+    height: 650px;
     width: 40%;
     justify-content: center;
     margin: 0 auto;
@@ -106,8 +106,8 @@ body {
     }
     .card{
         background-color: ghostwhite;
-        width:100vh;
-        height:100vh;
+        width:90vh;
+        height:90vh;
     }
 
     .card-img-top{
