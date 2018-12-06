@@ -1,5 +1,5 @@
 # **Pic Your Poison** #
-![Github picture] (https://github.com/CodingAshley1983/projecttest/blob/master/assets/images/drunkenpirateflag.jpg)
+(https://github.com/CodingAshley1983/projecttest/blob/master/assets/images/drunkenpirateflag.jpg)
 
 
 ###Project Description###
@@ -9,12 +9,15 @@ Mobile-based!
 Give her a spin:
 [Github](https://codingashley1983.github.io/projecttest)
 
-###Team Members##
+Team Members:
+
 **Ashley Hurlburt**
 [Github](https://github.com/CodingAshley1983)
+
 **Kenneth Smith**
 [Github](https://github.com/KennethS13)
+
 **Divya Gopalakrishnan**
 [Github]()
 
-##Ready to take her for a spin?##
+
