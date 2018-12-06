@@ -1,5 +1,5 @@
 body {
-    background-image: url(http://1000miles.ru/wp-content/uploads/2018/01/vintage-key-wallpaper-high-definition-For-Free-Wallpaper.jpg);
+    background-color: black;
       background-repeat: none;
 }
 .container-head {
@@ -22,8 +22,6 @@ body {
     width: 40%;
     justify-content: center;
     margin: 0 auto;
-    background-image: url(http://24.media.tumblr.com/06d078d7bb17e36c08c4488c388b9e32/tumblr_mhesviJUn11s1jj9ro1_500.gif); 
-    background-image: initial;
     padding-top: 10px;
 
     
