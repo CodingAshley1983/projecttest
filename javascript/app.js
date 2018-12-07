@@ -352,54 +352,38 @@ function displaySwap() {
 
  //cocktailDB call 
  function drinkCall(){
-   
- $.ajax({
-   url: drinkURL + pass,
-   method: "GET"
- }).then(function (response) {
-
-   console.log(response)
-             console.log(response.drinks[0].strDrink);
-             console.log(response.drinks[0].strDrinkThumb);
-             console.log(response.drinks[0].strIngredient1);
-             console.log(response.drinks[0].strIngredient2);
-             console.log(response.drinks[0].strIngredient3);
-             console.log(response.drinks[0].strIngredient4);
-             console.log(response.drinks[0].strIngredient5);
-             console.log(response.drinks[0].strIngredient6);
-             
-
-   var response= response.drinks[0];
-   $("#drink-body").text("")           
-              $("#drink-modal").show();
-             // drink name
-             $("#drink-title").text(response.strDrink);
-             
-             // ingredients
-             var ingredient = $("<div>");
-             var p1 = $("<p>").text("Ingredient 1: " + response.strIngredient1);
-             var p2 = $("<p>").text("Ingredient 2: " + response.strIngredient2);
-             var p3 = $("<p>").text("Ingredient 3: " + response.strIngredient3);
-             var p4 = $("<p>").text("Ingredient 4: " + response.strIngredient4);
-             var p5 = $("<p>").text("Ingredient 5: " + response.strIngredient5);
-             var p6 = $("<p>").text("Ingredient 6: " + response.strIngredient6);
-             var p7 = $("<p>").text("Instructions: " + response.strInstructions);
-                  
-             $("#drink-body").append(p1, p2, p3, p4, p5, p6, p7);
-             // images
-            
-             $("#drink-image").attr("src", response.strDrinkThumb);
-            //  pic.attr("height", "200");
-            //  $("#drink-image").append(pic);
-            storageDelete();
-           
- });
-            $("#drink-close").on("click", function(){
-              $("#drink-modal").hide();
-              
-            });
-            
-}
+   $.ajax({
+     url: drinkURL + pass,
+     method: "GET"
+   }).then(function (response) {              
+     var response= response.drinks[0];
+     $("#drink-modal").show();
+     $("#drink-title").text("Drink Name: " + response.strDrink);
+     // ingredients & Instructions;
+     $("#drink-body").empty();
+     for (var i in response) { 
+       if  (response.hasOwnProperty(i)) {
+         var n = i.indexOf("strIngredient");
+         if (n >= 0) { 
+           var respText = response[i];
+           if (respText.length > 0) {
+             console.log(i + " -> " + response[i]);
+             var pIngr = $("<p>").text("Ingredient: " + respText);
+             $("#drink-body").append(pIngr);
+           }
+         }
+       }          
+     }    
+     var pIns = $("<p>").text("Instructions: " + response.strInstructions);
+     $("#drink-body").append(pIns);
+     // images   
+     $("#drink-image").attr("src", response.strDrinkThumb);
+     storageDelete();
+   });
+   $("#drink-close").on("click", function(){
+   $("#drink-modal").hide();
+   });
+ }
 
 $(document).ready(function () {
   // Initialize Firebase
