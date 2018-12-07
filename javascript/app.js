@@ -358,7 +358,7 @@ function displaySwap() {
    }).then(function (response) {              
      var response= response.drinks[0];
      $("#drink-modal").show();
-     $("#drink-title").text("Drink Name: " + response.strDrink);
+     $("#drink-title").text(response.strDrink);
      // ingredients & Instructions;
      $("#drink-body").empty();
      for (var i in response) { 

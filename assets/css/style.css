@@ -87,6 +87,7 @@ body {
     border-radius: 50%;
     height: 50px;
     width: 50px;
+    
    
 }
 /* Float Shadow */
@@ -135,7 +136,8 @@ body {
 .figcaption {
     font-family: 'Fredericka the Great', cursive;
     font-size: 16px;
-    color: white;
+    color: limegreen;
+    background-color:  white;
 
 }
 
